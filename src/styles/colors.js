@@ -1,18 +1,17 @@
 export default {
-  white: '#FFF',
-  lighter: '#EEE',
-  light: '#DDD',
-  regular: '#999',
-  dark: '#666',
-  darker: '#333',
-  black: '#000',
+  darkPrimary: '#0D3981',
+  lightPrimary: '#7A87B7',
+  primaryColor: '#42559A',
+  textIconColor: '#FFFFFF',
+  accentColor: '#00BEEC',
+  primaryText: '#212121',
+  secundaryText: '#757575',
+  dividerColor: '#ECECEC',
 
-  primary: '#6550B7',
-  secundary: '#6ADC00',
   success: '#9DCA83',
   danger: '#E37A7A',
 
   transparent: 'transparent',
   darkTransparent: 'rgba(0, 0, 0, 0.6)',
   whiteTransparent: 'rgba(255, 255, 255, 0.3)',
-};
+}
