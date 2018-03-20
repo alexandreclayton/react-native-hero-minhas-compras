@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from 'react'
+import Login from 'pages/login'
 
-const Login = () => <View><Text>LOGIN</Text></View>;
+const Main = () => <Login />
 
-export default Login;
+export default Main

@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './src'
+import Main from './src'
 
-const App = () => <Login />
+const App = () => <Main />
 
 export default App
