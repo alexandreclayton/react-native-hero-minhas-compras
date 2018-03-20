@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
 
   buttonEntrar: {
     marginTop: metrics.baseMargin * 2,
+    backgroundColor: colors.accentColor,
   },
 
   buttonText: {

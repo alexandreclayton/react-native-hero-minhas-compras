@@ -42,6 +42,8 @@ export default class Login extends Component {
             <Icon name="md-person" style={styles.inputIcon} />
             <Input
               style={styles.input}
+              autoCapitalize="none"
+              autoCorrect={false}
               placeholderTextColor={colors.textColor}
               placeholder="Usuário"
               value={this.state.username}
@@ -52,6 +54,8 @@ export default class Login extends Component {
             <Icon name="md-key" style={styles.inputIcon} />
             <Input
               style={styles.input}
+              autoCapitalize="none"
+              autoCorrect={false}
               placeholderTextColor={colors.textColor}
               placeholder="Senha"
               secureTextEntry
@@ -59,7 +63,7 @@ export default class Login extends Component {
               onChangeText={password => this.setState({ password })}
             />
           </Item>
-          <Button block bordered light style={styles.buttonEntrar}>
+          <Button block style={styles.buttonEntrar}>
             <Text style={styles.buttonText}>Entrar</Text>
           </Button>
           <Button transparent light full>
