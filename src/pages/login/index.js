@@ -33,17 +33,19 @@ export default class Login extends Component {
     return (
       <Container style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.logo}>
+        <View style={styles.logoContent}>
           <Icon ios="ios-cart" android="md-cart" style={styles.logoIcon} />
-          <Text style={styles.title}>Minhas Compras</Text>
+          <Text style={styles.logoTitle}>Minhas Compras</Text>
         </View>
-        <View style={styles.form}>
+        <View style={styles.formContent}>
           <Item>
             <Icon name="md-person" style={styles.inputIcon} />
             <Input
               style={styles.input}
               placeholderTextColor={colors.textColor}
               placeholder="Usuário"
+              value={this.state.username}
+              onChangeText={username => this.setState({ username })}
             />
           </Item>
           <Item>
@@ -52,13 +54,16 @@ export default class Login extends Component {
               style={styles.input}
               placeholderTextColor={colors.textColor}
               placeholder="Senha"
+              secureTextEntry
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
             />
           </Item>
           <Button block bordered light style={styles.buttonEntrar}>
             <Text style={styles.buttonText}>Entrar</Text>
           </Button>
           <Button transparent light full>
-            <Text style={styles.buttonRecuperarText}>Recuperar senha</Text>
+            <Text style={styles.buttonText}>Recuperar senha</Text>
           </Button>
         </View>
       </Container >

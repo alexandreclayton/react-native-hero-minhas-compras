@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontSize: 70,
   },
 
-  title: {
+  logoTitle: {
     textAlign: 'center',
     color: colors.textColor,
     fontSize: 24,
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     marginTop: metrics.baseMargin,
   },
 
-  logo: {
+  logoContent: {
     flex: 1,
     justifyContent: 'center',
   },
 
-  form: {
+  formContent: {
     flex: 1,
     marginTop: metrics.baseMargin * 2,
   },
@@ -57,11 +57,6 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-
-  buttonRecuperarText: {
     fontWeight: 'bold',
     fontSize: 16,
   },
