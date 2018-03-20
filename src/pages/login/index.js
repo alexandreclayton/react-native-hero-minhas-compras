@@ -46,7 +46,7 @@ export default class Login extends Component {
               autoCorrect={false}
               placeholderTextColor={colors.textColor}
               placeholder="Usuário"
-              value={this.state.username}
+              value={username}
               onChangeText={username => this.setState({ username })}
             />
           </Item>
@@ -59,7 +59,7 @@ export default class Login extends Component {
               placeholderTextColor={colors.textColor}
               placeholder="Senha"
               secureTextEntry
-              value={this.state.password}
+              value={password}
               onChangeText={password => this.setState({ password })}
             />
           </Item>
