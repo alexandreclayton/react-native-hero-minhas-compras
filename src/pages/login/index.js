@@ -33,43 +33,45 @@ export default class Login extends Component {
     return (
       <Container style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.logoContent}>
-          <Icon ios="ios-cart" android="md-cart" style={styles.logoIcon} />
-          <Text style={styles.logoTitle}>Minhas Compras</Text>
-        </View>
-        <View style={styles.formContent}>
-          <Item>
-            <Icon name="md-person" style={styles.inputIcon} />
-            <Input
-              style={styles.input}
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholderTextColor={colors.textColor}
-              placeholder="Usuário"
-              value={username}
-              onChangeText={username => this.setState({ username })}
-            />
-          </Item>
-          <Item>
-            <Icon name="md-key" style={styles.inputIcon} />
-            <Input
-              style={styles.input}
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholderTextColor={colors.textColor}
-              placeholder="Senha"
-              secureTextEntry
-              value={password}
-              onChangeText={password => this.setState({ password })}
-            />
-          </Item>
-          <Button block style={styles.buttonEntrar}>
-            <Text style={styles.buttonText}>Entrar</Text>
-          </Button>
-          <Button transparent light full>
-            <Text style={styles.buttonText}>Recuperar senha</Text>
-          </Button>
-        </View>
+        <Content padder contentContainerStyle={styles.content}>
+          <View>
+            <Icon ios="ios-cart" android="md-cart" style={styles.logoIcon} />
+            <Text style={styles.logoTitle}>Minhas Compras</Text>
+          </View>
+          <View>
+            <Item>
+              <Icon name="md-person" style={styles.inputIcon} />
+              <Input
+                style={styles.input}
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholderTextColor={colors.textColor}
+                placeholder="Usuário"
+                value={username}
+                onChangeText={username => this.setState({ username })}
+              />
+            </Item>
+            <Item>
+              <Icon name="md-key" style={styles.inputIcon} />
+              <Input
+                style={styles.input}
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholderTextColor={colors.textColor}
+                placeholder="Senha"
+                secureTextEntry
+                value={password}
+                onChangeText={password => this.setState({ password })}
+              />
+            </Item>
+            <Button block style={styles.buttonEntrar}>
+              <Text style={styles.buttonText}>Entrar</Text>
+            </Button>
+            <Button transparent light full>
+              <Text style={styles.buttonText}>Recuperar senha</Text>
+            </Button>
+          </View>
+        </Content>
       </Container >
     )
   }

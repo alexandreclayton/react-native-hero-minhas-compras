@@ -3,9 +3,12 @@ import { colors, metrics } from 'styles'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.primaryColor,
-    padding: metrics.basePadding,
+  },
+
+  content: {
+    flexGrow: 1,
+    justifyContent: 'space-around',
   },
 
   logoIcon: {
@@ -32,16 +35,6 @@ const styles = StyleSheet.create({
     color: colors.danger,
     textAlign: 'center',
     marginTop: metrics.baseMargin,
-  },
-
-  logoContent: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-
-  formContent: {
-    flex: 1,
-    marginTop: metrics.baseMargin * 2,
   },
 
   input: {
