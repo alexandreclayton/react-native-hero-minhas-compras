@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, View, ActivityIndicator } from 'react-native'
 import {
   Container,
   Content,
@@ -21,13 +21,19 @@ export default class Login extends Component {
     username: '',
     password: '',
     errorMessage: '',
+    loading: false,
+  }
+
+  singIn = () => {
+    this.setState({ loading: !this.state.loading })
   }
 
   render() {
     const {
       username,
       password,
-      errorMessage
+      errorMessage,
+      loading,
     } = this.state
 
     return (
@@ -64,8 +70,11 @@ export default class Login extends Component {
                 onChangeText={password => this.setState({ password })}
               />
             </Item>
-            <Button block style={styles.buttonEntrar}>
-              <Text style={styles.buttonText}>Entrar</Text>
+            {!!errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
+            <Button block style={styles.buttonEntrar} onPress={this.singIn}>
+              {loading
+                ? <ActivityIndicator size="small" color={colors.textColor} />
+                : <Text style={styles.buttonText}>Entrar</Text>}
             </Button>
             <Button transparent light full>
               <Text style={styles.buttonText}>Recuperar senha</Text>
