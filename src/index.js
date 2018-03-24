@@ -1,6 +1,11 @@
-import React from 'react'
-import Login from 'pages/login'
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import createNavigator from 'navigation'
+import store from 'store'
 
-const Main = () => <Login />
-
-export default Main
+export default class App extends Component {
+  render() {
+    const Routes = createNavigator(false)
+    return <Provider store={store}><Routes /></Provider>
+  }
+}
