@@ -8,6 +8,7 @@ import {
   Icon,
   Button,
   Text,
+  Footer,
 } from 'native-base'
 import { colors } from 'styles'
 import styles from './styles'
@@ -40,11 +41,11 @@ export default class Login extends Component {
       <Container style={styles.container}>
         <StatusBar barStyle="light-content" />
         <Content padder contentContainerStyle={styles.content}>
-          <View>
+          <View style={styles.logoContent}>
             <Icon ios="ios-cart" android="md-cart" style={styles.logoIcon} />
             <Text style={styles.logoTitle}>Minhas Compras</Text>
           </View>
-          <View>
+          <View style={styles.formContent}>
             <Item>
               <Icon name="md-person" style={styles.inputIcon} />
               <Input
@@ -76,8 +77,10 @@ export default class Login extends Component {
                 ? <ActivityIndicator size="small" color={colors.textColor} />
                 : <Text style={styles.buttonText}>Entrar</Text>}
             </Button>
-            <Button transparent light full>
-              <Text style={styles.buttonText}>Recuperar senha</Text>
+          </View>
+          <View style={styles.footerContent}>
+            <Button transparent light>
+              <Text style={styles.buttonText}>Criar uma conta</Text>
             </Button>
           </View>
         </Content>

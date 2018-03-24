@@ -8,7 +8,21 @@ const styles = StyleSheet.create({
 
   content: {
     flexGrow: 1,
-    justifyContent: 'space-around',
+  },
+
+  logoContent: {
+    flex: 2,
+    justifyContent: 'center',
+  },
+
+  formContent: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+
+  footerContent: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   logoIcon: {
