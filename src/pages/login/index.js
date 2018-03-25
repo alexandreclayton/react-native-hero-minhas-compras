@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import connect from 'react-redux'
+import bindActionCreators from 'redux'
 import { StatusBar, View, ActivityIndicator } from 'react-native'
 import {
   Container,
@@ -8,12 +10,12 @@ import {
   Icon,
   Button,
   Text,
-  Footer,
 } from 'native-base'
 import { colors } from 'styles'
+import { Actions as LoginActions } from 'store/ducks/login'
 import styles from './styles'
 
-export default class Login extends Component {
+class Login extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -88,3 +90,11 @@ export default class Login extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  login: state.login,
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
