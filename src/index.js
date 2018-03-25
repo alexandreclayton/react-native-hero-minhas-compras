@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
+import 'config/reactotron'
+import 'config/firebase'
 import createNavigator from 'navigation'
 import store from 'store'
 import { isLogged } from 'services/firebase'

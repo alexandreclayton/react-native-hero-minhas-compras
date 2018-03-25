@@ -1,4 +1,4 @@
-import firebase from 'config/firebase'
+import firebase from 'firebase'
 
 const isLogged = () => firebase.auth().onAuthStateChanged(user => user)
 const getUserLogged = () => firebase.auth().currentUser

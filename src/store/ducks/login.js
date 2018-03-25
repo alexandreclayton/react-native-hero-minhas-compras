@@ -62,6 +62,7 @@ export const Actions = {
   },
   onLoginError: (error, dispatch) => {
     dispatch({ type: Types.LOGGED, payload: false })
-    dispatch({ type: Types.LOGIN_ERROR, payload: error })
+    dispatch({ type: Types.AUTHENTICATING, payload: false })
+    dispatch({ type: Types.LOGIN_ERROR, payload: error.message })
   },
 }
