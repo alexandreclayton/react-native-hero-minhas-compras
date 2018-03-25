@@ -11,6 +11,7 @@ import {
   Button,
   Text,
 } from 'native-base'
+import PropTypes from 'prop-types'
 import { colors } from 'styles'
 import { Actions as LoginActions } from 'store/ducks/login'
 import styles from './styles'
@@ -20,24 +21,46 @@ class Login extends Component {
     header: null,
   };
 
-  state = {
-    username: '',
-    password: '',
-    errorMessage: '',
-    loading: false,
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func,
+    }).isRequired,
+    login: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      error: PropTypes.string.isRequired,
+      authenticating: PropTypes.bool.isRequired,
+      logged: PropTypes.bool.isRequired,
+    }).isRequired,
+    onLoginUsernameChange: PropTypes.func.isRequired,
+    onLoginPasswordChange: PropTypes.func.isRequired,
+    onLoginAuth: PropTypes.func.isRequired,
+    onLoginErrorValid: PropTypes.func.isRequired,
+  };
+
+  componentWillReceiveProps() {
+    if (this.props.login.logged) {
+      this.props.navigation.navigate('Main')
+    }
   }
 
   singIn = () => {
-    this.setState({ loading: !this.state.loading })
+    const { username, password } = this.props.login
+    if (username && password) {
+      this.props.onLoginAuth(username, password)
+    } else {
+      this.props.onLoginErrorValid('Usuário/Senha inválido!')
+    }
   }
 
   render() {
     const {
       username,
       password,
-      errorMessage,
-      loading,
-    } = this.state
+      error,
+      authenticating,
+      logged,
+    } = this.props.login
 
     return (
       <Container style={styles.container}>
@@ -45,7 +68,7 @@ class Login extends Component {
         <Content padder contentContainerStyle={styles.content}>
           <View style={styles.logoContent}>
             <Icon ios="ios-cart" android="md-cart" style={styles.logoIcon} />
-            <Text style={styles.logoTitle}>Minhas Compras</Text>
+            <Text style={styles.logoTitle}>Minhas Compras {logged}</Text>
           </View>
           <View style={styles.formContent}>
             <Item>
@@ -57,7 +80,7 @@ class Login extends Component {
                 placeholderTextColor={colors.textColor}
                 placeholder="Usuário"
                 value={username}
-                onChangeText={username => this.setState({ username })}
+                onChangeText={username => this.props.onLoginUsernameChange(username)}
               />
             </Item>
             <Item>
@@ -70,12 +93,12 @@ class Login extends Component {
                 placeholder="Senha"
                 secureTextEntry
                 value={password}
-                onChangeText={password => this.setState({ password })}
+                onChangeText={password => this.props.onLoginPasswordChange(password)}
               />
             </Item>
-            {!!errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
+            {!!error && <Text style={styles.error}>{error}</Text>}
             <Button block style={styles.buttonEntrar} onPress={this.singIn}>
-              {loading
+              {authenticating
                 ? <ActivityIndicator size="small" color={colors.textColor} />
                 : <Text style={styles.buttonText}>Entrar</Text>}
             </Button>

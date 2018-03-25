@@ -1,8 +1,12 @@
+import firebase from 'firebase'
+
 // State Login
 const initialState = {
   username: '',
   password: '',
   error: '',
+  authenticating: false,
+  logged: false,
 }
 
 // Actions Types
@@ -10,6 +14,8 @@ export const Types = {
   CHANGE_USERNAME: 'login/CHANGE_USERNAME',
   CHANGE_PASSWORD: 'login/CHANGE_PASSWORD',
   LOGIN_ERROR: 'login/LOGIN_ERROR',
+  AUTHENTICATING: 'login/AUTHENTICATING',
+  LOGGED: 'login/LOGGED',
 }
 
 // Reducers
@@ -21,6 +27,10 @@ export default function favorites(state = initialState, action) {
       return { ...state, password: action.payload }
     case Types.LOGIN_ERROR:
       return { ...state, error: action.payload }
+    case Types.AUTHENTICATING:
+      return { ...state, authenticating: action.payload }
+    case Types.LOGGED:
+      return { ...state, logged: action.payload }
     default:
       return state
   }
@@ -28,16 +38,30 @@ export default function favorites(state = initialState, action) {
 
 // Actions Creators
 export const Actions = {
-  onChangeUsername: username => ({
+  onLoginUsernameChange: username => ({
     type: Types.CHANGE_USERNAME,
     payload: username,
   }),
-  onChangePassword: password => ({
+  onLoginPasswordChange: password => ({
     type: Types.CHANGE_PASSWORD,
     payload: password,
   }),
-  onChangeLoginError: error => ({
+  onLoginErrorValid: error => ({
     type: Types.LOGIN_ERROR,
     payload: error,
   }),
+  onLoginAuth: (username, password) => (dispatch) => {
+    dispatch({ type: Types.AUTHENTICATING, payload: true })
+    firebase.auth().signInWithEmailAndPassword(username, password)
+      .then(success => Actions.onLoginSuccess())
+      .catch(error => Actions.onLoginError(error, dispatch))
+  },
+  onLoginSuccess: (dispatch) => {
+    dispatch({ type: Types.LOGGED, payload: true })
+    dispatch({ type: Types.LOGIN_ERROR, payload: '' })
+  },
+  onLoginError: (error, dispatch) => {
+    dispatch({ type: Types.LOGGED, payload: false })
+    dispatch({ type: Types.LOGIN_ERROR, payload: error })
+  },
 }
