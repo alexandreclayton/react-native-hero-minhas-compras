@@ -36,7 +36,8 @@ class Login extends Component {
   };
 
   singIn = () => {
-    const { username, password } = this.props.login
+    const { username, password, authenticating } = this.props.login
+    if (authenticating) return
     if (username && password) {
       this.props.onLoginAuth(username, password)
     } else {
@@ -68,7 +69,7 @@ class Login extends Component {
                 style={styles.input}
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholderTextColor={colors.textColor}
+                placeholderTextColor={colors.white}
                 placeholder="Usuário"
                 value={username}
                 onChangeText={username => this.props.onLoginUsernameChange(username)}
@@ -80,7 +81,7 @@ class Login extends Component {
                 style={styles.input}
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholderTextColor={colors.textColor}
+                placeholderTextColor={colors.white}
                 placeholder="Senha"
                 secureTextEntry
                 value={password}
@@ -88,9 +89,9 @@ class Login extends Component {
               />
             </Item>
             {!!error && <Text style={styles.error}>{error}</Text>}
-            <Button block style={styles.buttonEntrar} onPress={this.singIn}>
+            <Button block style={styles.buttonEntrar} onPress={this.singIn} disable={authenticating}>
               {authenticating
-                ? <ActivityIndicator size="small" color={colors.textColor} />
+                ? <ActivityIndicator size="small" color={colors.white} />
                 : <Text style={styles.buttonText}>Entrar</Text>}
             </Button>
           </View>

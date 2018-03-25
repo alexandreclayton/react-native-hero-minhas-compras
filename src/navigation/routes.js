@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation'
-import { metrics } from 'styles'
+import { colors } from 'styles'
 import { isLogged } from 'services/firebase'
 
 import Login from 'pages/login'
@@ -12,7 +12,9 @@ export default StackNavigator({
   initialRouteName: (isLogged() ? 'Main' : 'Login'),
   navigationOptions: () => ({
     headerStyle: {
-      paddingHorizontal: metrics.basePadding,
+      backgroundColor: colors.primaryColorDark,
     },
+    headerTintColor: colors.white,
+    headerBackTitle: null,
   }),
 })

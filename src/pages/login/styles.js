@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
 
   logoIcon: {
     textAlign: 'center',
-    color: colors.textColor,
+    color: colors.white,
     fontSize: 70,
   },
 
   logoTitle: {
     textAlign: 'center',
-    color: colors.textColor,
+    color: colors.white,
     fontSize: 24,
     fontWeight: 'bold',
   },
@@ -52,11 +52,11 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    color: colors.textColor,
+    color: colors.white,
   },
 
   inputIcon: {
-    color: colors.textColor,
+    color: colors.white,
   },
 
   buttonEntrar: {
