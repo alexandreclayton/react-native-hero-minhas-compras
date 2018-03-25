@@ -22,9 +22,6 @@ class Login extends Component {
   };
 
   static propTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func,
-    }).isRequired,
     login: PropTypes.shape({
       username: PropTypes.string.isRequired,
       password: PropTypes.string.isRequired,
@@ -37,12 +34,6 @@ class Login extends Component {
     onLoginAuth: PropTypes.func.isRequired,
     onLoginErrorValid: PropTypes.func.isRequired,
   };
-
-  componentWillReceiveProps() {
-    if (this.props.login.logged) {
-      this.props.navigation.navigate('Main')
-    }
-  }
 
   singIn = () => {
     const { username, password } = this.props.login
