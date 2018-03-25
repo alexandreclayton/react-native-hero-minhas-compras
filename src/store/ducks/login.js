@@ -62,7 +62,6 @@ export const Actions = {
     dispatch({ type: Types.LOGIN_ERROR, payload: '' })
   },
   onLoginError: (error, dispatch) => {
-    dispatch(NavigationActions.navigate({ routeName: 'Main' }))
     dispatch({ type: Types.LOGGED, payload: true })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.LOGIN_ERROR, payload: error.message })
