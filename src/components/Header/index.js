@@ -35,7 +35,7 @@ const HeaderApp = ({
         </Button>
         : left}
     </Left>
-    <Body>
+    <Body style={styles.containerTitle}>
       <Title style={styles.title}>{title}</Title>
       {subtitle ? <Subtitle>Subtitle</Subtitle> : null }
     </Body>
