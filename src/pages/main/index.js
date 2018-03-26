@@ -3,26 +3,16 @@ import {
   Container,
   Content,
   Text,
-  Header,
-  Left,
 } from 'native-base'
 import { View, StatusBar } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { Header } from 'components'
 import styles from './styles'
 
 const Main = ({ navigation }) => (
   <Container style={styles.container}>
     <StatusBar barStyle="light-content" />
-    <Header>
-      <Left>
-        <Icon
-          name="navicon"
-          size={16}
-          onPress={() => navigation.navigate('DrawerOpen')}
-        />
-      </Left>
-    </Header>
+    <Header title="Minhas Compras" navigation={navigation} />
     <Content padder contentContainerStyle={styles.content}>
       <View><Text>LISTA</Text></View>
     </Content>
