@@ -3,8 +3,8 @@ import Color from 'color'
 export default {
   darkPrimary: '#0D3981',
   lightPrimary: '#7A87B7',
-  primaryColor: 'rgba(66, 79, 163, 1)',
-  primaryColorDark: Color('rgba(66, 79, 163, 1)').darken(0.1),
+  primaryColor: '#424fa3',
+  primaryColorDark: Color('#424fa3').darken(0.1),
   white: '#FFFFFF',
   accentColor: '#00BEEC',
   primaryText: '#212121',

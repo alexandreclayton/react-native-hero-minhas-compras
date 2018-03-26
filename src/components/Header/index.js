@@ -20,7 +20,7 @@ const HeaderApp = ({
   right,
   navigation,
 }) => (
-  <Header style={styles.header} iosBarStyle="light-content" androidStatusBarColor={colors.white}>
+  <Header style={styles.header} iosBarStyle="light-content">
     <Left>
       {!left ?
         <Button

@@ -52,7 +52,7 @@ class Login extends Component {
 
     return (
       <Container style={styles.container}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
         <Content padder contentContainerStyle={styles.content}>
           <View style={styles.logoContent}>
             <Icon ios="ios-cart" android="md-cart" style={styles.logoIcon} />
