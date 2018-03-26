@@ -19,7 +19,7 @@ import styles from './styles'
 class Login extends Component {
   static navigationOptions = {
     header: null,
-  };
+  }
 
   static propTypes = {
     login: PropTypes.shape({
@@ -33,7 +33,7 @@ class Login extends Component {
     onLoginPasswordChange: PropTypes.func.isRequired,
     onLoginAuth: PropTypes.func.isRequired,
     onLoginErrorValid: PropTypes.func.isRequired,
-  };
+  }
 
   singIn = () => {
     const { username, password, authenticating } = this.props.login

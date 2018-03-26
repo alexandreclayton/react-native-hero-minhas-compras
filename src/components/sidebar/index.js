@@ -14,15 +14,14 @@ const SideBar = () => (
     <Content>
       <List
         dataArray={routes}
-        renderRow={data => {
-          return (
-            <ListItem
-              button
-              onPress={() => this.props.navigation.navigate(data)}>
-              <Text>{data}</Text>
-            </ListItem>
-          );
-        }}
+        renderRow={data => (
+          <ListItem
+            button
+            onPress={() => this.props.navigation.navigate(data)}
+          >
+            <Text>{data}</Text>
+          </ListItem>
+        )}
       />
     </Content>
   </Container>
