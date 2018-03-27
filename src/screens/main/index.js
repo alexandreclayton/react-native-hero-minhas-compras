@@ -12,6 +12,7 @@ import styles from './styles'
 
 const Main = ({ navigation }) => (
   <Container style={styles.container}>
+    <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
     <Content padder contentContainerStyle={styles.content}>
       <View><Text>LISTA</Text></View>
     </Content>
@@ -20,6 +21,7 @@ const Main = ({ navigation }) => (
 
 Main.navigationOptions = {
   title: 'Minhas Compras',
+  headerMode: 'float',
 }
 
 Main.propTypes = {

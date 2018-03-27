@@ -4,54 +4,42 @@ import { Text } from 'react-native'
 import { isLogged } from 'services/firebase'
 import { colors, metrics } from 'styles'
 
-import Login from 'pages/login'
-import Main from 'pages/main'
+import SignIn from 'screens/signin'
+import SignUp from 'screens/signup'
+import Main from 'screens/main'
 
-
-// Main DrawerStack
-const contentDrawer = DrawerNavigator({ screen: Main })
-const DrawerNavigation = StackNavigator({ DrawerStack: contentDrawer }, {
-  headerMode: 'float',
-  navigationOptions: ({ navigation }) => ({
-    title: 'Logged In to your app!',
-    headerLeft: <Text onPress={() => navigation.navigate('DrawerOpen')}>Menu</Text>,
+const LoginStack = StackNavigator({
+  SingIn: { screen: SignIn },
+  SingUp: { screen: SignUp },
+}, {
+  // Default config for all screens in login level
+  navigationOptions: () => ({
+    header: null,
   }),
 })
-// Login Stack
-const LoginStack = StackNavigator({
-  SingIn: { screen: Login },
-  SingUp: { screen: Login, navigationOptions: { title: 'Nova Conta' } },
-}, { headerMode: 'float' })
 
-// Root Stack Navigation
-export default StackNavigator({
-  loginStack: { screen: LoginStack },
-  drawerStack: { screen: DrawerNavigation },
+const MainStack = StackNavigator({
+  Main: { screen: Main },
 }, {
-  headerMode: 'none',
-  title: 'Main',
-  initialRouteName: 'loginStack',
-  navigationOptions: () => ({
+  // Default config for all screens (in auth users)
+  navigationOptions: ({ navigation }) => ({
     headerStyle: {
       backgroundColor: colors.primaryColorDark,
       paddingHorizontal: metrics.basePadding,
     },
     headerTintColor: colors.white,
     headerBackTitle: null,
+    headerLeft: <Text onPress={() => navigation.navigate('DrawerOpen')}>Menu</Text>,
   }),
 })
 
-/*
 export default DrawerNavigator({
-  Login: {
-    screen: Login,
+  LoginStack: {
+    screen: LoginStack,
     navigationOptions: () => ({
       drawerLabel: () => null,
       drawerLockMode: 'locked-closed',
     }),
   },
-  Main: { screen: Main },
-}, {
-  initialRouteName: (isLogged() ? 'Main' : 'Login'),
-})
-*/
+  MainStack: { screen: MainStack },
+}, { initialRouteName: (isLogged() ? 'MainStack' : 'LoginStack') })
