@@ -17,6 +17,9 @@ import { Actions as LoginActions } from 'store/ducks/login'
 import styles from './styles'
 
 class Login extends Component {
+  static navigationOptions = {
+    header: null,
+  }
   static propTypes = {
     login: PropTypes.shape({
       username: PropTypes.string.isRequired,

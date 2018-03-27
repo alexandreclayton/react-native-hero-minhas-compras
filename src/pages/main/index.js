@@ -12,12 +12,15 @@ import styles from './styles'
 
 const Main = ({ navigation }) => (
   <Container style={styles.container}>
-    <Header title="Minhas Compras" navigation={navigation} />
     <Content padder contentContainerStyle={styles.content}>
       <View><Text>LISTA</Text></View>
     </Content>
   </Container>
 )
+
+Main.navigationOptions = {
+  title: 'Minhas Compras',
+}
 
 Main.propTypes = {
   navigation: PropTypes.shape().isRequired,
