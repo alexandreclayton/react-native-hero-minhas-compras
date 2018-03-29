@@ -4,9 +4,13 @@ import { Text } from 'react-native'
 import { isLogged } from 'services/firebase'
 import { colors, metrics } from 'styles'
 
+// Screens
 import SignIn from 'screens/signin'
 import SignUp from 'screens/signup'
 import Main from 'screens/main'
+
+// Components
+import { Drawer } from 'components'
 
 const LoginStack = StackNavigator({
   SingIn: { screen: SignIn },
@@ -42,4 +46,7 @@ export default DrawerNavigator({
     }),
   },
   MainStack: { screen: MainStack },
-}, { initialRouteName: (isLogged() ? 'MainStack' : 'LoginStack') })
+}, {
+  initialRouteName: (isLogged() ? 'MainStack' : 'LoginStack'),
+  contentComponent: Drawer,
+})
