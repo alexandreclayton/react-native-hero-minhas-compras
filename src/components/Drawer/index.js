@@ -20,7 +20,7 @@ import styles from './styles'
 const dataMenu = [
   {
     title: 'Minhas Compras',
-    route: 'RootApp',
+    route: 'Main',
     iosIcon: 'ios-clipboard',
     mdIcon: 'md-clipboard',
   },
@@ -32,13 +32,13 @@ const dataMenu = [
   },
   {
     title: 'Produtos',
-    route: 'ProductScreen',
+    route: 'Product',
     iosIcon: 'ios-barcode',
     mdIcon: 'md-barcode',
   },
   {
     title: 'Sair',
-    route: 'ProductScreen',
+    route: 'Product',
     iosIcon: 'ios-log-out',
     mdIcon: 'md-log-out',
   },
