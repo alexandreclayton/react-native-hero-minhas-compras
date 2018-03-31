@@ -1,6 +1,6 @@
 import React from 'react'
 import { StackNavigator, DrawerNavigator, SwitchNavigator } from 'react-navigation'
-import { Text } from 'react-native'
+import { Text, Button } from 'native-base'
 import { colors, metrics } from 'styles'
 
 // Screens
@@ -11,7 +11,8 @@ import Main from 'screens/main'
 import Product from 'screens/product'
 
 // Components
-import { Drawer } from 'components'
+import { Drawer, HeaderLeft } from 'components'
+
 
 const LoginAppStack = StackNavigator({
   SingIn: { screen: SignIn },
@@ -36,7 +37,7 @@ const MainAppStack = StackNavigator({
       },
       headerTintColor: colors.white,
       headerBackTitle: null,
-      headerLeft: <Text onPress={() => navigation.navigate('DrawerOpen')}>Menu</Text>,
+      headerLeft: <HeaderLeft navigation={navigation} />,
     }),
 })
 
@@ -51,5 +52,5 @@ export default SwitchNavigator({
   AuthApp: LoginAppStack,
   RootApp: RootAppStack,
 }, {
-  initialRouteName: 'AuthLoading',
+  initialRouteName: 'RootApp',
 })

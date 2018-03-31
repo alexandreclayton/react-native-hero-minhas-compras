@@ -1,24 +1,39 @@
 import { StyleSheet } from 'react-native'
-// import { colors, metrics } from 'styles'
+import { colors, metrics } from 'styles'
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 20,
+  content: {
     flex: 1,
+    marginTop: metrics.baseMargin,
   },
-  navItemStyle: {
-    padding: 10,
+  drawerHeader: {
+    height: 200,
+    backgroundColor: colors.primaryColor,
   },
-  navSectionStyle: {
-    backgroundColor: 'lightgrey',
+  drawerImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 120,
+    width: 120,
+    borderRadius: 75,
+    backgroundColor: colors.lightPrimary,
   },
-  sectionHeadingStyle: {
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+  drawerImageDefault: {
+    height: 80,
+    width: 80,
+    textAlign: 'center',
+    color: colors.white,
+    fontSize: 80,
+    backgroundColor: colors.lightPrimary,
   },
-  footerContainer: {
-    padding: 20,
-    backgroundColor: 'lightgrey',
+  drawerName: {
+    color: colors.white,
+    marginTop: metrics.baseMargin,
+  },
+  drawerItem: {
+    height: 16,
+    width: 16,
+    color: colors.secundaryText,
   },
 })
 

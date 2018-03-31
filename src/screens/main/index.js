@@ -5,8 +5,8 @@ import {
   Text,
 } from 'native-base'
 import { View, StatusBar } from 'react-native'
+import { NavigationActions, withNavigation } from 'react-navigation'
 import PropTypes from 'prop-types'
-import { Header } from 'components'
 import { colors } from 'styles'
 import styles from './styles'
 
