@@ -1,9 +1,9 @@
 import React from 'react'
-import { ScrollView, Text, View } from 'react-native'
-import { SafeAreaView, NavigationActions } from 'react-navigation'
+import { ScrollView, Text, View, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 import styles from './styles'
 
-const Drawer = props => (
+const Drawer = ({ navigation }) => (
   <View style={styles.container}>
     <ScrollView>
       <View>
@@ -11,9 +11,11 @@ const Drawer = props => (
           Section 1
         </Text>
         <View style={styles.navSectionStyle}>
-          <Text style={styles.navItemStyle}>
-            Page1
-          </Text>
+          <TouchableOpacity onPress={() => navigation.popToTop()}>
+            <Text style={styles.navItemStyle}>
+              Home
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
       <View>
@@ -21,9 +23,11 @@ const Drawer = props => (
           Section 2
         </Text>
         <View style={styles.navSectionStyle}>
-          <Text style={styles.navItemStyle}>
-            Page2
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('ProductScreen')}>
+            <Text style={styles.navItemStyle} >
+              Product
+            </Text>
+          </TouchableOpacity>
           <Text style={styles.navItemStyle}>
             Page3
           </Text>
@@ -32,5 +36,9 @@ const Drawer = props => (
     </ScrollView>
   </View>
 )
+
+Drawer.propTypes = {
+  navigation: PropTypes.shape().isRequired,
+}
 
 export default Drawer
