@@ -1,6 +1,5 @@
 import React from 'react'
 import { StackNavigator, DrawerNavigator, SwitchNavigator } from 'react-navigation'
-import { Text, Button } from 'native-base'
 import { colors, metrics } from 'styles'
 
 // Screens

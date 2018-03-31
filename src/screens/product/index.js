@@ -5,11 +5,11 @@ import {
   Text,
 } from 'native-base'
 import { View, StatusBar } from 'react-native'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { colors } from 'styles'
 import styles from './styles'
 
-const Product = ({ navigation }) => (
+const Product = () => (
   <Container style={styles.container}>
     <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
     <Content padder contentContainerStyle={styles.content}>
@@ -22,9 +22,10 @@ Product.navigationOptions = {
   title: 'Produtos',
   headerMode: 'float',
 }
-
+/*
 Product.propTypes = {
   navigation: PropTypes.shape().isRequired,
 }
+*/
 
 export default Product

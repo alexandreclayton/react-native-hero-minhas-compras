@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { ScrollView, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 import {
   Container,
   Header,
@@ -13,14 +13,13 @@ import {
   Text,
   Icon,
 } from 'native-base'
-import PropTypes from 'prop-types'
 import { isLogged, getUserLogged } from 'lib/firebase'
 import styles from './styles'
 
 const dataMenu = [
   {
     title: 'Minhas Compras',
-    route: 'Main',
+    route: 'MainScreen',
     iosIcon: 'ios-clipboard',
     mdIcon: 'md-clipboard',
   },
@@ -32,19 +31,17 @@ const dataMenu = [
   },
   {
     title: 'Produtos',
-    route: 'Product',
+    route: 'ProductScreen',
     iosIcon: 'ios-barcode',
     mdIcon: 'md-barcode',
-  },
-  {
-    title: 'Sair',
-    route: 'Product',
-    iosIcon: 'ios-log-out',
-    mdIcon: 'md-log-out',
   },
 ]
 
 class Drawer extends Component {
+  static propTypes = {
+    navigation: PropTypes.shape().isRequired,
+  }
+
   nav = (route) => {
     const { navigation } = this.props
     navigation.navigate(route)
@@ -95,8 +92,4 @@ class Drawer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  nav: state.nav,
-})
-
-export default connect(mapStateToProps)(Drawer)
+export default Drawer
