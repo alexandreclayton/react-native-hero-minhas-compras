@@ -51,5 +51,5 @@ export default SwitchNavigator({
   AuthApp: LoginAppStack,
   RootApp: RootAppStack,
 }, {
-  initialRouteName: 'RootApp',
+  initialRouteName: 'AuthApp',
 })

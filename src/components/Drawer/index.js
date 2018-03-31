@@ -44,7 +44,7 @@ class Drawer extends Component {
 
   nav = (route) => {
     const { navigation } = this.props
-    navigation.navigate(route)
+    navigation.navigate({ routeName: route, key: route })
   }
 
   renderItem = data => (
