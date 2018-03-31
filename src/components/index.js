@@ -1,5 +1,4 @@
-import Header from './Header'
 import HeaderLeft from './Header/Left'
 import Drawer from './Drawer'
 
-export { Header, Drawer, HeaderLeft }
+export { Drawer, HeaderLeft }
