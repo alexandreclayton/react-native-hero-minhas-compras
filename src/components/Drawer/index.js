@@ -14,19 +14,19 @@ import {
   Icon,
 } from 'native-base'
 import { isLogged, getUserLogged } from 'lib/firebase'
-import { route } from 'lib/navigation'
+import { routes } from 'lib/navigation'
 import styles from './styles'
 
-const itensMenu = Object.values(route)
+const itensMenu = Object.values(routes)
 
 class Drawer extends Component {
   static propTypes = {
     navigation: PropTypes.shape().isRequired,
   }
 
-  nav = (router) => {
+  nav = (route) => {
     const { navigation } = this.props
-    navigation.navigate(router)
+    navigation.navigate(route)
   }
 
   renderItem = (data) => {

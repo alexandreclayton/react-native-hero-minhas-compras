@@ -1,17 +1,5 @@
-const getCurrentRouteName = (navigationState) => {
-  if (!navigationState) {
-    return null
-  }
-  const route = navigationState.routes[navigationState.index]
-  // dive into nested navigators
-  if (route.routes) {
-    return getCurrentRouteName(route)
-  }
-  return route.routeName
-}
-
 // Routes
-const route = {
+const routes = {
   SIGNIN_SCREEN: {
     title: 'Acesso',
     route: { routeName: 'SignIn', key: 'SignIn' },
@@ -49,5 +37,16 @@ const route = {
   },
 }
 
+const getCurrentRouteName = (navigationState) => {
+  if (!navigationState) {
+    return null
+  }
+  const route = navigationState.routes[navigationState.index]
+  // dive into nested navigators
+  if (route.routes) {
+    return getCurrentRouteName(route)
+  }
+  return route.routeName
+}
 
-export { getCurrentRouteName, route }
+export { getCurrentRouteName, routes }

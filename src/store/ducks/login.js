@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 import { NavigationActions } from 'react-navigation'
-import { route } from 'lib/navigation'
+import { routes } from 'lib/navigation'
 
 // State Login
 const initialState = {
@@ -55,11 +55,11 @@ export const Actions = {
   onLoginAuth: (username, password) => (dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: true })
     firebase.auth().signInWithEmailAndPassword(username, password)
-      .then(success => Actions.onLoginSuccess(dispatch))
+      .then(() => Actions.onLoginSuccess(dispatch))
       .catch(error => Actions.onLoginError(error, dispatch))
   },
   onLoginSuccess: (dispatch) => {
-    dispatch(NavigationActions.navigate(route.MAIN_SCREEN.route))
+    dispatch(NavigationActions.navigate(routes.MAIN_SCREEN.route))
     dispatch({ type: Types.LOGGED, payload: true })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.LOGIN_ERROR, payload: '' })
