@@ -14,56 +14,41 @@ import {
   Icon,
 } from 'native-base'
 import { isLogged, getUserLogged } from 'lib/firebase'
+import { route } from 'lib/navigation'
 import styles from './styles'
 
-const dataMenu = [
-  {
-    title: 'Minhas Compras',
-    route: 'MainScreen',
-    iosIcon: 'ios-clipboard',
-    mdIcon: 'md-clipboard',
-  },
-  {
-    title: 'Categorias',
-    route: 'CategoryScreen',
-    iosIcon: 'ios-list',
-    mdIcon: 'md-list',
-  },
-  {
-    title: 'Produtos',
-    route: 'ProductScreen',
-    iosIcon: 'ios-barcode',
-    mdIcon: 'md-barcode',
-  },
-]
+const itensMenu = Object.values(route)
 
 class Drawer extends Component {
   static propTypes = {
     navigation: PropTypes.shape().isRequired,
   }
 
-  nav = (route) => {
+  nav = (router) => {
     const { navigation } = this.props
-    navigation.navigate({ routeName: route, key: route })
+    navigation.navigate(router)
   }
 
-  renderItem = data => (
-    <ListItem
-      button
-      noBorder
-      onPress={() => this.nav(data.route)}
-    >
-      <Left>
-        <Icon
-          active
-          ios={data.iosIcon}
-          android={data.mdIcon}
-          style={styles.drawerItem}
-        />
-        <Text style={styles.text}>{data.title}</Text>
-      </Left>
-    </ListItem>
-  )
+  renderItem = (data) => {
+    if (!data.iosIcon) return null
+    return (
+      <ListItem
+        button
+        noBorder
+        onPress={() => this.nav(data.route)}
+      >
+        <Left>
+          <Icon
+            active
+            ios={data.iosIcon}
+            android={data.mdIcon}
+            style={styles.drawerItem}
+          />
+          <Text style={styles.text}>{data.title}</Text>
+        </Left>
+      </ListItem>
+    )
+  }
 
   render() {
     const { email = '' } = isLogged() ? getUserLogged() : ''
@@ -82,7 +67,7 @@ class Drawer extends Component {
         <Content bounces={false} style={styles.content}>
           <ScrollView>
             <List
-              dataArray={dataMenu}
+              dataArray={itensMenu}
               renderRow={data => this.renderItem(data)}
             />
           </ScrollView>

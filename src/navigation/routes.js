@@ -8,16 +8,15 @@ import SignIn from 'screens/signin'
 import SignUp from 'screens/signup'
 import Main from 'screens/main'
 import Product from 'screens/product'
+import Category from 'screens/category'
 
 // Components
 import { Drawer, HeaderLeft } from 'components'
 
-
 const LoginAppStack = StackNavigator({
-  SingIn: { screen: SignIn },
-  SingUp: { screen: SignUp },
+  SignIn: { screen: SignIn },
+  SignUp: { screen: SignUp },
 }, {
-  // Default config for all screens in login level
   navigationOptions: () => ({
     header: null,
   }),
@@ -26,6 +25,7 @@ const LoginAppStack = StackNavigator({
 const MainAppStack = StackNavigator({
   MainScreen: { screen: Main },
   ProductScreen: { screen: Product },
+  CategoryScreen: { screen: Category },
 }, {
   initialRouteName: 'MainScreen',
   navigationOptions: ({ navigation }) => (
