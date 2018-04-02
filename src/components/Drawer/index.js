@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import {
@@ -13,7 +15,6 @@ import {
   Text,
   Icon,
 } from 'native-base'
-import { isLogged, getUserLogged } from 'lib/firebase'
 import { routes } from 'lib/navigation'
 import styles from './styles'
 
@@ -22,6 +23,7 @@ const itensMenu = Object.values(routes)
 class Drawer extends Component {
   static propTypes = {
     navigation: PropTypes.shape().isRequired,
+    login: PropTypes.shape().isRequired,
   }
 
   nav = (route) => {
@@ -51,17 +53,17 @@ class Drawer extends Component {
   }
 
   render() {
-    const { email = '' } = isLogged() ? getUserLogged() : ''
+    const { user } = this.props.login
     return (
       <Container>
         <Header style={styles.drawerHeader}>
           <Body>
             <TouchableOpacity onPress={() => null}>
               <View style={styles.drawerImage} >
-                <Icon ios="md-person" android="md-person" style={styles.drawerImageDefault} />
+                <Icon ios="ios-person" android="md-person" style={styles.drawerImageDefault} />
               </View>
             </TouchableOpacity>
-            <Text style={styles.drawerName}>{email}</Text>
+            <Text style={styles.drawerName}>{user.email}</Text>
           </Body>
         </Header>
         <Content bounces={false} style={styles.content}>
@@ -77,4 +79,8 @@ class Drawer extends Component {
   }
 }
 
-export default Drawer
+const mapStateToProps = state => ({
+  login: state.login,
+})
+
+export default connect(mapStateToProps)(Drawer)

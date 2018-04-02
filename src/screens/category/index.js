@@ -19,7 +19,7 @@ const Category = () => (
 )
 
 Category.navigationOptions = {
-  title: 'Produtos',
+  title: 'Cetegorias',
   headerMode: 'float',
 }
 /*

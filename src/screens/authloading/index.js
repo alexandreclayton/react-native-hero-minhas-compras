@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import {
   ActivityIndicator,
   StatusBar,
   View,
+  AsyncStorage,
 } from 'react-native'
 import PropTypes from 'prop-types'
-import { isLogged } from 'lib/firebase'
+import { Actions as LoginActions } from 'store/ducks/login'
 import styles from './styles'
 
-class AuthLoadingScreen extends React.Component {
+class AuthLoadingScreen extends Component {
   static propTypes = {
     navigation: PropTypes.shape().isRequired,
+    onLogged: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -20,11 +24,13 @@ class AuthLoadingScreen extends React.Component {
 
   // Fetch the token from storage then navigate to our appropriate place
   bootstrapAsync = async () => {
-    // const userToken = await AsyncStorage.getItem('userToken')
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(isLogged() ? 'RootApp' : 'AuthApp')
-  };
+    const userData = JSON.parse(await AsyncStorage.getItem('@MinhasCompras:user'))
+    console.log(userData)
+    if (userData) {
+      this.props.onLogged(userData)
+    }
+    this.props.navigation.navigate(userData ? 'RootApp' : 'AuthApp')
+  }
 
   // Render any loading content that you like here
   render() {
@@ -37,4 +43,6 @@ class AuthLoadingScreen extends React.Component {
   }
 }
 
-export default AuthLoadingScreen
+const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch)
+
+export default connect(null, mapDispatchToProps)(AuthLoadingScreen)
