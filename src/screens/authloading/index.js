@@ -9,6 +9,8 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import { Actions as LoginActions } from 'store/ducks/login'
+import { colors } from 'styles'
+import { routes } from 'lib/navigation'
 import styles from './styles'
 
 class AuthLoadingScreen extends Component {
@@ -25,11 +27,10 @@ class AuthLoadingScreen extends Component {
   // Fetch the token from storage then navigate to our appropriate place
   bootstrapAsync = async () => {
     const userData = JSON.parse(await AsyncStorage.getItem('@MinhasCompras:user'))
-    console.log(userData)
     if (userData) {
       this.props.onLogged(userData)
     }
-    this.props.navigation.navigate(userData ? 'RootApp' : 'AuthApp')
+    this.props.navigation.navigate(userData ? routes.MAIN_SCREEN.route : routes.SIGNIN_SCREEN.route)
   }
 
   // Render any loading content that you like here
@@ -37,7 +38,7 @@ class AuthLoadingScreen extends Component {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
-        <StatusBar barStyle="default" />
+        <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
       </View>
     )
   }

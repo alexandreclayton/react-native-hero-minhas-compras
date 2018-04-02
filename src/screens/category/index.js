@@ -20,7 +20,6 @@ const Category = () => (
 
 Category.navigationOptions = {
   title: 'Cetegorias',
-  headerMode: 'float',
 }
 /*
 Product.propTypes = {

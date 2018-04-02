@@ -20,7 +20,6 @@ const Product = () => (
 
 Product.navigationOptions = {
   title: 'Produtos',
-  headerMode: 'float',
 }
 /*
 Product.propTypes = {
