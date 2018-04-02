@@ -18,7 +18,7 @@ import { routes } from 'lib/navigation'
 import { colors } from 'styles'
 import styles from './styles'
 
-const itensMenu = Object.values(routes)
+const routeItems = Object.values(routes)
 
 class Drawer extends Component {
   static propTypes = {
@@ -31,7 +31,7 @@ class Drawer extends Component {
     navigation.navigate(route)
   }
 
-  renderItem = (data) => {
+  drawerItems = (data) => {
     if (!data.iosIcon) return null
     return (
       <ListItem
@@ -70,8 +70,8 @@ class Drawer extends Component {
         <Content bounces={false} style={styles.content}>
           <ScrollView>
             <List
-              dataArray={itensMenu}
-              renderRow={data => this.renderItem(data)}
+              dataArray={routeItems}
+              renderRow={data => this.drawerItems(data)}
             />
           </ScrollView>
         </Content>

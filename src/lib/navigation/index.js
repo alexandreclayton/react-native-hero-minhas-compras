@@ -1,5 +1,19 @@
 // Routes
 const routes = {
+  LOGINAPP_STACK: {
+    title: 'LOGINAPP_STACK',
+    route: { routeName: 'LoginAppStack', key: 'LoginAppStack' },
+    iosIcon: '',
+    mdIcon: '',
+    screen: 'SignIn',
+  },
+  ROOTAPP_STACK: {
+    title: 'ROOTAPP_STACK',
+    route: { routeName: 'RootAppStack', key: 'RootAppStack' },
+    iosIcon: '',
+    mdIcon: '',
+    screen: 'SignIn',
+  },
   SIGNIN_SCREEN: {
     title: 'Acesso',
     route: { routeName: 'SignIn', key: 'SignIn' },

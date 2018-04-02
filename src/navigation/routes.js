@@ -28,6 +28,7 @@ const MainAppStack = StackNavigator({
   CategoryScreen: { screen: Category },
 }, {
   initialRouteName: 'MainScreen',
+  headerMode: 'screen',
   navigationOptions: ({ navigation }) => (
     {
       headerStyle: {
@@ -41,7 +42,7 @@ const MainAppStack = StackNavigator({
 })
 
 const RootAppStack = DrawerNavigator({
-  MainAppStack,
+  MainAppStack: { screen: MainAppStack },
 }, {
   contentComponent: Drawer,
 })

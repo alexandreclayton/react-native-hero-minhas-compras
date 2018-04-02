@@ -5,7 +5,7 @@ import {
   Content,
   Text,
 } from 'native-base'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { colors } from 'styles'
 import styles from './styles'
 
