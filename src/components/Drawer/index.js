@@ -56,8 +56,7 @@ class Drawer extends Component {
     const { user } = this.props.login
     return (
       <Container>
-        <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
-        <Header style={styles.drawerHeader}>
+        <Header style={styles.drawerHeader} iosBarStyle="light-content" androidStatusBarColor={colors.white}>
           <Body>
             <TouchableOpacity onPress={() => null}>
               <View style={styles.drawerImage} >

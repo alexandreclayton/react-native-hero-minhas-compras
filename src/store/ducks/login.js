@@ -67,7 +67,7 @@ export const Actions = {
   onLoginSuccess: async (success, dispatch) => {
     // Save on Storage
     await AsyncStorage.setItem('@MinhasCompras:user', JSON.stringify(success))
-    dispatch(NavigationActions.navigate(routes.MAIN_SCREEN.route))
+    dispatch(NavigationActions.navigate(routes.ROOTAPP_STACK.route))
     dispatch({ type: Types.LOGGED, payload: true })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.LOGIN_ERROR, payload: '' })

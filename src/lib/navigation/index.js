@@ -1,25 +1,18 @@
 // Routes
 const routes = {
+  AUTH_SCREEN: {
+    title: 'AuthLoadingScreen',
+    route: { routeName: 'AuthLoadingScreen', key: 'AuthLoadingScreen' },
+    iosIcon: '',
+    mdIcon: '',
+    screen: 'AuthLoadingScreen',
+  },
   LOGINAPP_STACK: {
-    title: 'LOGINAPP_STACK',
-    route: { routeName: 'LoginAppStack', key: 'LoginAppStack' },
+    title: 'LoginNavApp',
+    route: { routeName: 'LoginNavApp', key: 'LoginNavApp' },
     iosIcon: '',
     mdIcon: '',
-    screen: 'SignIn',
-  },
-  ROOTAPP_STACK: {
-    title: 'ROOTAPP_STACK',
-    route: { routeName: 'RootAppStack', key: 'RootAppStack' },
-    iosIcon: '',
-    mdIcon: '',
-    screen: 'SignIn',
-  },
-  SIGNIN_SCREEN: {
-    title: 'Acesso',
-    route: { routeName: 'SignIn', key: 'SignIn' },
-    iosIcon: '',
-    mdIcon: '',
-    screen: 'SignIn',
+    screen: 'LoginNavApp',
   },
   SIGNUP_SCREEN: {
     title: 'Cadastro',
@@ -27,6 +20,13 @@ const routes = {
     iosIcon: '',
     mdIcon: '',
     screen: 'SignUp',
+  },
+  ROOTAPP_STACK: {
+    title: 'RootNavApp',
+    route: { routeName: 'RootNavApp', key: 'RootNavApp' },
+    iosIcon: '',
+    mdIcon: '',
+    screen: 'RootNavApp',
   },
   MAIN_SCREEN: {
     title: 'Minhas Compras',
@@ -51,16 +51,4 @@ const routes = {
   },
 }
 
-const getCurrentRouteName = (navigationState) => {
-  if (!navigationState) {
-    return null
-  }
-  const route = navigationState.routes[navigationState.index]
-  // dive into nested navigators
-  if (route.routes) {
-    return getCurrentRouteName(route)
-  }
-  return route.routeName
-}
-
-export { getCurrentRouteName, routes }
+export { routes }

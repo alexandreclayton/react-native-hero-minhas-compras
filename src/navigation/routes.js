@@ -10,10 +10,13 @@ import Main from 'screens/main'
 import Product from 'screens/product'
 import Category from 'screens/category'
 
+// Routes
+import { routes } from 'lib/navigation'
+
 // Components
 import { Drawer, HeaderLeft } from 'components'
 
-const LoginAppStack = StackNavigator({
+const LoginNavApp = StackNavigator({
   SignIn: { screen: SignIn },
   SignUp: { screen: SignUp },
 }, {
@@ -22,13 +25,12 @@ const LoginAppStack = StackNavigator({
   }),
 })
 
-const MainAppStack = StackNavigator({
+const RootNavApp = StackNavigator({
   MainScreen: { screen: Main },
   ProductScreen: { screen: Product },
   CategoryScreen: { screen: Category },
 }, {
-  initialRouteName: 'MainScreen',
-  headerMode: 'screen',
+  initialRouteName: routes.MAIN_SCREEN.route.routeName,
   navigationOptions: ({ navigation }) => (
     {
       headerStyle: {
@@ -41,18 +43,19 @@ const MainAppStack = StackNavigator({
     }),
 })
 
-const RootAppStack = DrawerNavigator({
-  MainAppStack: { screen: MainAppStack },
+const DrawerNavApp = DrawerNavigator({
+  RootNavApp,
 }, {
+  initialRouteName: routes.ROOTAPP_STACK.route.routeName,
   contentComponent: Drawer,
 })
 
-const SwitchApp = SwitchNavigator({
-  AuthLoading: AuthLoadingScreen,
-  LoginAppStack,
-  RootAppStack,
+const SwitchNavApp = SwitchNavigator({
+  AuthLoadingScreen,
+  LoginNavApp,
+  DrawerNavApp,
 }, {
-  initialRouteName: 'AuthLoading',
+  initialRouteName: routes.AUTH_SCREEN.route.routeName,
 })
 
-export default SwitchApp
+export default SwitchNavApp

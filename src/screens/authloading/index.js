@@ -32,7 +32,7 @@ class AuthLoadingScreen extends Component {
     if (userData) {
       this.props.onLogged(userData)
     }
-    this.props.navigation.navigate(userData ? routes.MAIN_SCREEN.route : routes.SIGNIN_SCREEN.route)
+    this.props.navigation.navigate(userData ? routes.ROOTAPP_STACK.route : routes.LOGINAPP_STACK.route)
   }
 
   // Render any loading content that you like here
