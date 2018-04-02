@@ -52,8 +52,8 @@ const DrawerNavApp = DrawerNavigator({
 
 const SwitchNavApp = SwitchNavigator({
   AuthLoadingScreen,
-  LoginNavApp,
   DrawerNavApp,
+  LoginNavApp,
 }, {
   initialRouteName: routes.AUTH_SCREEN.route.routeName,
 })
