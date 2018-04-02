@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { ScrollView, TouchableOpacity, StatusBar } from 'react-native'
 import PropTypes from 'prop-types'
 import {
   Container,
@@ -15,6 +15,7 @@ import {
   Icon,
 } from 'native-base'
 import { routes } from 'lib/navigation'
+import { colors } from 'styles'
 import styles from './styles'
 
 const itensMenu = Object.values(routes)
@@ -55,6 +56,7 @@ class Drawer extends Component {
     const { user } = this.props.login
     return (
       <Container>
+        <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
         <Header style={styles.drawerHeader}>
           <Body>
             <TouchableOpacity onPress={() => null}>

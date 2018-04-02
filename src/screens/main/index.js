@@ -13,7 +13,7 @@ const Main = () => (
   <Container style={styles.container}>
     <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
     <Content padder contentContainerStyle={styles.content}>
-      <View><Text>CATEGORIAS</Text></View>
+      <View><Text>MINHAS COMPRAS LIST</Text></View>
     </Content>
   </Container>
 )

@@ -46,10 +46,12 @@ const RootAppStack = DrawerNavigator({
   contentComponent: Drawer,
 })
 
-export default SwitchNavigator({
+const SwitchApp = SwitchNavigator({
   AuthLoading: AuthLoadingScreen,
   LoginAppStack,
   RootAppStack,
 }, {
   initialRouteName: 'AuthLoading',
 })
+
+export default SwitchApp
