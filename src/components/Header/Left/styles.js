@@ -2,16 +2,6 @@ import { StyleSheet } from 'react-native'
 import { colors } from 'styles'
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: colors.primaryColorDark,
-  },
-  containerTitle: {
-    flex: 2,
-  },
-  title: {
-    color: colors.white,
-    fontSize: 15,
-  },
   iconLeft: {
     color: colors.white,
   },

@@ -5,22 +5,26 @@ import {
   Text,
 } from 'native-base'
 import { View, StatusBar } from 'react-native'
-import PropTypes from 'prop-types'
-import { Header } from 'components'
+// import PropTypes from 'prop-types'
 import { colors } from 'styles'
 import styles from './styles'
 
-const Main = ({ navigation }) => (
+const Category = () => (
   <Container style={styles.container}>
-    <Header title="Minhas Compras" navigation={navigation} />
+    <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
     <Content padder contentContainerStyle={styles.content}>
-      <View><Text>LISTA</Text></View>
+      <View><Text>CATEGORIAS</Text></View>
     </Content>
   </Container>
 )
 
-Main.propTypes = {
+Category.navigationOptions = {
+  title: 'Cetegorias',
+}
+/*
+Product.propTypes = {
   navigation: PropTypes.shape().isRequired,
 }
+*/
 
-export default Main // connect(mapStateToProps)(Main)
+export default Category

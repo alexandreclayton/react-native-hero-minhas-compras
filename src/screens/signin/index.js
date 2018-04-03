@@ -16,7 +16,7 @@ import { colors } from 'styles'
 import { Actions as LoginActions } from 'store/ducks/login'
 import styles from './styles'
 
-class Login extends Component {
+class SignIn extends Component {
   static propTypes = {
     login: PropTypes.shape({
       username: PropTypes.string.isRequired,
@@ -31,7 +31,7 @@ class Login extends Component {
     onLoginErrorValid: PropTypes.func.isRequired,
   }
 
-  singIn = () => {
+  signIn = () => {
     const { username, password, authenticating } = this.props.login
     if (authenticating) return
     if (username && password) {
@@ -85,7 +85,7 @@ class Login extends Component {
               />
             </Item>
             {!!error && <Text style={styles.error}>{error}</Text>}
-            <Button block style={styles.buttonEntrar} onPress={this.singIn} disable={authenticating}>
+            <Button block style={styles.buttonEntrar} onPress={this.signIn} disable={authenticating}>
               {authenticating
                 ? <ActivityIndicator size="small" color={colors.white} />
                 : <Text style={styles.buttonText}>Entrar</Text>}
@@ -108,4 +108,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

@@ -1,21 +1,61 @@
-import { DrawerNavigator } from 'react-navigation'
-import { Platform, StatusBar } from 'react-native'
-import { isLogged } from 'services/firebase'
-import Login from 'pages/login'
-import Main from 'pages/main'
+import React from 'react'
+import { StackNavigator, DrawerNavigator, SwitchNavigator } from 'react-navigation'
+import { colors, metrics } from 'styles'
 
-export default DrawerNavigator({
-  Login: {
-    screen: Login,
-    navigationOptions: () => ({
-      drawerLabel: () => null,
-      drawerLockMode: 'locked-closed',
-    }),
-  },
-  Main: { screen: Main },
+// Screens
+import AuthLoadingScreen from 'screens/authloading'
+import SignIn from 'screens/signin'
+import SignUp from 'screens/signup'
+import Main from 'screens/main'
+import Product from 'screens/product'
+import Category from 'screens/category'
+
+// Routes
+import { routes } from 'lib/navigation'
+
+// Components
+import { Drawer, HeaderLeft } from 'components'
+
+const LoginNavApp = StackNavigator({
+  SignIn: { screen: SignIn },
+  SignUp: { screen: SignUp },
 }, {
-  initialRouteName: (isLogged() ? 'Main' : 'Login'),
-  cardStyle: {
-    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-  },
+  navigationOptions: () => ({
+    header: null,
+  }),
 })
+
+const RootNavApp = StackNavigator({
+  MainScreen: { screen: Main },
+  ProductScreen: { screen: Product },
+  CategoryScreen: { screen: Category },
+}, {
+  initialRouteName: routes.MAIN_SCREEN.route.routeName,
+  navigationOptions: ({ navigation }) => (
+    {
+      headerStyle: {
+        backgroundColor: colors.primaryColorDark,
+        paddingHorizontal: metrics.basePadding,
+      },
+      headerTintColor: colors.white,
+      headerBackTitle: null,
+      headerLeft: <HeaderLeft navigation={navigation} />,
+    }),
+})
+
+const DrawerNavApp = DrawerNavigator({
+  RootNavApp,
+}, {
+  initialRouteName: routes.ROOTAPP_STACK.route.routeName,
+  contentComponent: Drawer,
+})
+
+const SwitchNavApp = SwitchNavigator({
+  AuthLoadingScreen,
+  DrawerNavApp,
+  LoginNavApp,
+}, {
+  initialRouteName: routes.AUTH_SCREEN.route.routeName,
+})
+
+export default SwitchNavApp
