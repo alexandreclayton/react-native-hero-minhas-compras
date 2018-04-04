@@ -58,6 +58,7 @@ class SiderBarCustom extends Component {
     const { user } = this.props.login
     return (
       <Container>
+        {/*
         <View style={styles.drawerHeader}>
           <View style={styles.drawerImage}>
             <Button transparent>
@@ -66,11 +67,15 @@ class SiderBarCustom extends Component {
           </View>
           <Text style={styles.drawerName}>{user.email}</Text>
         </View>
+        */}
+        <View style={styles.drawerHeader}>
+          <Thumbnail large source={require('assets/noimage.png')} />
+          <Text style={styles.drawerTextUserName}>{user.email}</Text>
+        </View>
         <Content>
           <List
             dataArray={routeItems}
             renderRow={data => this.drawerItems(data)}
-            style={styles.list}
           />
         </Content>
         <Button
