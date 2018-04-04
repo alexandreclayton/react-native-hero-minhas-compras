@@ -22,8 +22,7 @@ class AuthLoadingScreen extends Component {
     onLogged: PropTypes.func.isRequired,
   }
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.bootstrapAsync()
   }
 
@@ -34,6 +33,7 @@ class AuthLoadingScreen extends Component {
     const login = (params ? params.login : null)
     const userData = JSON.parse(await AsyncStorage.getItem(storages.STORAGE_USER))
     let routeAction = null
+
     switch (login) {
       case 'success':
         await AsyncStorage.setItem(storages.STORAGE_USER, JSON.stringify(user))

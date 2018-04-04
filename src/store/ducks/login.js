@@ -63,7 +63,7 @@ export const Actions = {
   onLoginSuccess: (success, dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.USER, payload: success })
-    dispatch(NavigationActions.navigate(routes.AUTH_SCREEN.route, { login: 'success' }))
+    dispatch(NavigationActions.navigate({ ...routes.AUTH_SCREEN.route, params: { login: 'success' } }))
   },
   onLoginError: (error, dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
@@ -74,9 +74,9 @@ export const Actions = {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.USER, payload: user })
   },
-  onLogOut: (dispatch) => {
+  onLogOut: () => (dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.USER, payload: '' })
-    dispatch(NavigationActions.navigate(routes.AUTH_SCREEN.route, { login: 'logout' }))
+    dispatch(NavigationActions.navigate({ ...routes.AUTH_SCREEN.route, params: { login: 'logout' } }))
   },
 }
