@@ -36,10 +36,6 @@ const RootNavApp = StackNavigator({
       headerStyle: {
         backgroundColor: colors.primaryColorDark,
       },
-      headerTitleStyle: {
-        textAlign: 'center',
-        alignSelf: 'center',
-      },
       headerTintColor: colors.white,
       headerBackTitle: null,
       headerLeft: <HeaderLeft navigation={navigation} />,
