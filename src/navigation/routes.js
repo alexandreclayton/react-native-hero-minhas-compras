@@ -1,6 +1,6 @@
 import React from 'react'
 import { StackNavigator, DrawerNavigator, SwitchNavigator } from 'react-navigation'
-import { colors, metrics } from 'styles'
+import { colors } from 'styles'
 
 // Screens
 import AuthLoadingScreen from 'screens/authloading'
