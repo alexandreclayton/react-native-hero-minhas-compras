@@ -1,4 +1,3 @@
-import { AsyncStorage } from 'react-native'
 import firebase from 'firebase'
 import { NavigationActions } from 'react-navigation'
 import { routes } from 'lib/navigation'
@@ -9,7 +8,6 @@ const initialState = {
   password: '123456',
   error: '',
   authenticating: false,
-  logged: false,
   user: '',
 }
 
@@ -35,8 +33,6 @@ export default function favorites(state = initialState, action) {
       return { ...state, error: action.payload }
     case Types.AUTHENTICATING:
       return { ...state, authenticating: action.payload }
-    case Types.LOGGED:
-      return { ...state, logged: action.payload }
     case Types.USER:
       return { ...state, user: action.payload }
     default:
@@ -64,32 +60,23 @@ export const Actions = {
       .then(success => Actions.onLoginSuccess(success, dispatch))
       .catch(error => Actions.onLoginError(error, dispatch))
   },
-  onLoginSuccess: async (success, dispatch) => {
-    // Save on Storage
-    await AsyncStorage.setItem('@MinhasCompras:user', JSON.stringify(success))
-    dispatch(NavigationActions.navigate(routes.ROOTAPP_STACK.route))
-    dispatch({ type: Types.LOGGED, payload: true })
+  onLoginSuccess: (success, dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
-    dispatch({ type: Types.LOGIN_ERROR, payload: '' })
     dispatch({ type: Types.USER, payload: success })
+    dispatch(NavigationActions.navigate({ ...routes.AUTH_SCREEN.route, params: { login: 'success' } }))
   },
-  onLoginError: async (error, dispatch) => {
-    // Remove on Storage
-    await AsyncStorage.removeItem('@MinhasCompras:user')
-    dispatch({ type: Types.LOGGED, payload: true })
+  onLoginError: (error, dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.LOGIN_ERROR, payload: error.message })
+    dispatch({ type: Types.USER, payload: '' })
   },
   onLogged: user => (dispatch) => {
-    dispatch({ type: Types.LOGGED, payload: true })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.USER, payload: user })
   },
-  onLogOut: async (dispatch) => {
-    // Remove on Storage
-    await AsyncStorage.removeItem('@MinhasCompras:user')
-    dispatch({ type: Types.LOGGED, payload: false })
+  onLogOut: () => (dispatch) => {
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.USER, payload: '' })
+    dispatch(NavigationActions.navigate({ ...routes.AUTH_SCREEN.route, params: { login: 'logout' } }))
   },
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { StackNavigator, DrawerNavigator, SwitchNavigator } from 'react-navigation'
-import { colors, metrics } from 'styles'
+import { colors } from 'styles'
 
 // Screens
 import AuthLoadingScreen from 'screens/authloading'
@@ -14,7 +14,7 @@ import Category from 'screens/category'
 import { routes } from 'lib/navigation'
 
 // Components
-import { Drawer, HeaderLeft } from 'components'
+import { SiderBarCustom, HeaderLeft } from 'components'
 
 const LoginNavApp = StackNavigator({
   SignIn: { screen: SignIn },
@@ -35,7 +35,6 @@ const RootNavApp = StackNavigator({
     {
       headerStyle: {
         backgroundColor: colors.primaryColorDark,
-        paddingHorizontal: metrics.basePadding,
       },
       headerTintColor: colors.white,
       headerBackTitle: null,
@@ -47,7 +46,7 @@ const DrawerNavApp = DrawerNavigator({
   RootNavApp,
 }, {
   initialRouteName: routes.ROOTAPP_STACK.route.routeName,
-  contentComponent: Drawer,
+  contentComponent: SiderBarCustom,
 })
 
 const SwitchNavApp = SwitchNavigator({

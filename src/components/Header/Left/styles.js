@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
-import { colors } from 'styles'
+import { colors, metrics } from 'styles'
 
 const styles = StyleSheet.create({
-  iconLeft: {
+  icon: {
     color: colors.white,
   },
 })
