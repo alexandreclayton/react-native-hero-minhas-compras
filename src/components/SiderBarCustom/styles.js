@@ -29,11 +29,13 @@ const styles = StyleSheet.create({
     fontSize: 80,
     backgroundColor: colors.lightPrimary,
   },
-
   drawerItem: {
     height: 16,
     width: 16,
     color: colors.secundaryText,
+  },
+  list: {
+    flex: 1,
   },
 })
 

@@ -18,6 +18,7 @@ import styles from './styles'
 class AuthLoadingScreen extends Component {
   static propTypes = {
     navigation: PropTypes.shape().isRequired,
+    login: PropTypes.shape().isRequired,
     onLogged: PropTypes.func.isRequired,
   }
 
@@ -28,19 +29,41 @@ class AuthLoadingScreen extends Component {
 
   // Fetch the token from storage then navigate to our appropriate place
   bootstrapAsync = async () => {
-    let resetAction = NavigationActions.navigate(routes.LOGINAPP_STACK.route)
+    const { user } = this.props.login
+    const { params } = this.props.navigation.state
+    const login = (params ? params.login : null)
     const userData = JSON.parse(await AsyncStorage.getItem(storages.STORAGE_USER))
-    if (userData) {
-      this.props.onLogged(userData)
-      resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate(routes.MAIN_SCREEN.route),
-        ],
-      })
+    let routeAction = null
+    switch (login) {
+      case 'success':
+        await AsyncStorage.setItem(storages.STORAGE_USER, JSON.stringify(user))
+        routeAction = NavigationActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate(routes.MAIN_SCREEN.route),
+          ],
+        })
+        break
+      case 'logout':
+        await AsyncStorage.removeItem(storages.STORAGE_USER)
+        routeAction = NavigationActions.navigate(routes.LOGINAPP_STACK.route)
+        break
+      default:
+        if (userData) {
+          this.props.onLogged(userData)
+          routeAction = NavigationActions.reset({
+            index: 0,
+            actions: [
+              NavigationActions.navigate(routes.MAIN_SCREEN.route),
+            ],
+          })
+        } else {
+          routeAction = NavigationActions.navigate(routes.LOGINAPP_STACK.route)
+        }
     }
+
     // Dispatch route
-    this.props.navigation.dispatch(resetAction)
+    this.props.navigation.dispatch(routeAction)
   }
 
   // Render any loading content that you like here
@@ -54,7 +77,10 @@ class AuthLoadingScreen extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  login: state.login,
+})
 
 const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch)
 
-export default connect(null, mapDispatchToProps)(AuthLoadingScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthLoadingScreen)

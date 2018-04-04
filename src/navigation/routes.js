@@ -14,7 +14,7 @@ import Category from 'screens/category'
 import { routes } from 'lib/navigation'
 
 // Components
-import { SiderBar, HeaderLeft } from 'components'
+import { SiderBarCustom, HeaderLeft } from 'components'
 
 const LoginNavApp = StackNavigator({
   SignIn: { screen: SignIn },
@@ -50,7 +50,7 @@ const DrawerNavApp = DrawerNavigator({
   RootNavApp,
 }, {
   initialRouteName: routes.ROOTAPP_STACK.route.routeName,
-  contentComponent: SiderBar,
+  contentComponent: SiderBarCustom,
 })
 
 const SwitchNavApp = SwitchNavigator({

@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import {
   Container,
-  Header,
-  Body,
   Content,
   List,
   ListItem,
@@ -16,17 +14,18 @@ import {
   Thumbnail,
   Button,
 } from 'native-base'
+import { Actions as LoginActions } from 'store/ducks/login'
 import { routes } from 'lib/navigation'
-import { colors } from 'styles'
 import styles from './styles'
 
 // Parser Object => Array
 const routeItems = Object.values(routes)
 
-class Drawer extends Component {
+class SiderBarCustom extends Component {
   static propTypes = {
     navigation: PropTypes.shape().isRequired,
     login: PropTypes.shape().isRequired,
+    onLogOut: PropTypes.func.isRequired,
   }
 
   nav = (route) => {
@@ -61,7 +60,7 @@ class Drawer extends Component {
       <Container>
         <View style={styles.drawerHeader}>
           <View style={styles.drawerImage}>
-            <Button transparent >
+            <Button transparent>
               <Thumbnail large source={require('assets/noimage.png')} />
             </Button>
           </View>
@@ -71,8 +70,18 @@ class Drawer extends Component {
           <List
             dataArray={routeItems}
             renderRow={data => this.drawerItems(data)}
+            style={styles.list}
           />
         </Content>
+        <Button
+          iconLeft
+          danger
+          full
+          onPress={() => this.props.onLogOut()}
+        >
+          <Icon name="log-out" />
+          <Text>Sair</Text>
+        </Button>
       </Container>
     )
   }
@@ -82,4 +91,7 @@ const mapStateToProps = state => ({
   login: state.login,
 })
 
-export default connect(mapStateToProps)(Drawer)
+const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SiderBarCustom)

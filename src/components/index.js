@@ -1,5 +1,4 @@
 import HeaderLeft from './Header/Left'
-import Drawer from './Drawer'
-import SiderBar from './SiderBar'
+import SiderBarCustom from './SiderBarCustom'
 
-export { Drawer, SiderBar, HeaderLeft }
+export { SiderBarCustom, HeaderLeft }
