@@ -2,6 +2,7 @@ import { AsyncStorage } from 'react-native'
 import firebase from 'firebase'
 import { NavigationActions } from 'react-navigation'
 import { routes } from 'lib/navigation'
+import { storages } from 'lib/syncstorage'
 
 // State Login
 const initialState = {
@@ -66,7 +67,7 @@ export const Actions = {
   },
   onLoginSuccess: async (success, dispatch) => {
     // Save on Storage
-    await AsyncStorage.setItem('@MinhasCompras:user', JSON.stringify(success))
+    await AsyncStorage.setItem(storages.STORAGE_USER, JSON.stringify(success))
     dispatch(NavigationActions.navigate(routes.ROOTAPP_STACK.route))
     dispatch({ type: Types.LOGGED, payload: true })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
@@ -75,7 +76,7 @@ export const Actions = {
   },
   onLoginError: async (error, dispatch) => {
     // Remove on Storage
-    await AsyncStorage.removeItem('@MinhasCompras:user')
+    await AsyncStorage.removeItem(storages.STORAGE_USER)
     dispatch({ type: Types.LOGGED, payload: true })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.LOGIN_ERROR, payload: error.message })
@@ -87,7 +88,7 @@ export const Actions = {
   },
   onLogOut: async (dispatch) => {
     // Remove on Storage
-    await AsyncStorage.removeItem('@MinhasCompras:user')
+    await AsyncStorage.removeItem(storages.STORAGE_USER)
     dispatch({ type: Types.LOGGED, payload: false })
     dispatch({ type: Types.AUTHENTICATING, payload: false })
     dispatch({ type: Types.USER, payload: '' })

@@ -13,6 +13,8 @@ import {
   View,
   Text,
   Icon,
+  Thumbnail,
+  Button,
 } from 'native-base'
 import { routes } from 'lib/navigation'
 import { colors } from 'styles'
@@ -57,23 +59,19 @@ class Drawer extends Component {
     const { user } = this.props.login
     return (
       <Container>
-        <Header style={styles.drawerHeader} iosBarStyle="light-content" androidStatusBarColor={colors.white}>
-          <Body>
-            <TouchableOpacity onPress={() => null}>
-              <View style={styles.drawerImage} >
-                <Icon ios="ios-person" android="md-person" style={styles.drawerImageDefault} />
-              </View>
-            </TouchableOpacity>
-            <Text style={styles.drawerName}>{user.email}</Text>
-          </Body>
-        </Header>
-        <Content bounces={false} style={styles.content}>
-          <ScrollView>
-            <List
-              dataArray={routeItems}
-              renderRow={data => this.drawerItems(data)}
-            />
-          </ScrollView>
+        <View style={styles.drawerHeader}>
+          <View style={styles.drawerImage}>
+            <Button transparent >
+              <Thumbnail large source={require('assets/noimage.png')} />
+            </Button>
+          </View>
+          <Text style={styles.drawerName}>{user.email}</Text>
+        </View>
+        <Content>
+          <List
+            dataArray={routeItems}
+            renderRow={data => this.drawerItems(data)}
+          />
         </Content>
       </Container>
     )

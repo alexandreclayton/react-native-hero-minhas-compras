@@ -6,13 +6,13 @@ import {
   ActivityIndicator,
   StatusBar,
   View,
-  Text,
   AsyncStorage,
 } from 'react-native'
 import PropTypes from 'prop-types'
 import { Actions as LoginActions } from 'store/ducks/login'
 import { colors } from 'styles'
 import { routes } from 'lib/navigation'
+import { storages } from 'lib/syncstorage'
 import styles from './styles'
 
 class AuthLoadingScreen extends Component {
@@ -29,7 +29,7 @@ class AuthLoadingScreen extends Component {
   // Fetch the token from storage then navigate to our appropriate place
   bootstrapAsync = async () => {
     let resetAction = NavigationActions.navigate(routes.LOGINAPP_STACK.route)
-    const userData = JSON.parse(await AsyncStorage.getItem('@MinhasCompras:user'))
+    const userData = JSON.parse(await AsyncStorage.getItem(storages.STORAGE_USER))
     if (userData) {
       this.props.onLogged(userData)
       resetAction = NavigationActions.reset({

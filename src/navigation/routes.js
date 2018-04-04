@@ -14,7 +14,7 @@ import Category from 'screens/category'
 import { routes } from 'lib/navigation'
 
 // Components
-import { Drawer, HeaderLeft } from 'components'
+import { SiderBar, HeaderLeft } from 'components'
 
 const LoginNavApp = StackNavigator({
   SignIn: { screen: SignIn },
@@ -35,7 +35,10 @@ const RootNavApp = StackNavigator({
     {
       headerStyle: {
         backgroundColor: colors.primaryColorDark,
-        paddingHorizontal: metrics.basePadding,
+      },
+      headerTitleStyle: {
+        textAlign: 'center',
+        alignSelf: 'center',
       },
       headerTintColor: colors.white,
       headerBackTitle: null,
@@ -47,7 +50,7 @@ const DrawerNavApp = DrawerNavigator({
   RootNavApp,
 }, {
   initialRouteName: routes.ROOTAPP_STACK.route.routeName,
-  contentComponent: Drawer,
+  contentComponent: SiderBar,
 })
 
 const SwitchNavApp = SwitchNavigator({

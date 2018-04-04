@@ -6,21 +6,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     marginTop: metrics.baseMargin,
   },
-  list: {
-    flex: 1,
-    backgroundColor: colors.primaryColor,
-  },
   drawerHeader: {
-    height: 200,
-    backgroundColor: colors.primaryColor,
-  },
-  drawerImage: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 120,
-    width: 120,
-    borderRadius: 75,
-    backgroundColor: colors.lightPrimary,
+    backgroundColor: colors.primaryColor,
+    paddingTop: metrics.baseMargin * 2,
+  },
+  drawerImage: {
+    marginTop: metrics.baseMargin * 2,
+  },
+  drawerName: {
+    color: colors.white,
+    fontSize: 12,
+    marginTop: metrics.baseMargin * 2,
+    marginBottom: metrics.baseMargin,
   },
   drawerImageDefault: {
     height: 80,
@@ -30,10 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 80,
     backgroundColor: colors.lightPrimary,
   },
-  drawerName: {
-    color: colors.white,
-    marginTop: metrics.baseMargin,
-  },
+
   drawerItem: {
     height: 16,
     width: 16,
