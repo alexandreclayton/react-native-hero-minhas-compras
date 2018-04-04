@@ -28,18 +28,14 @@ class SiderBarCustom extends Component {
     onLogOut: PropTypes.func.isRequired,
   }
 
-  nav = (route) => {
-    const { navigation } = this.props
-    navigation.navigate(route)
-  }
-
   drawerItems = (data) => {
+    const { navigation } = this.props
     if (!data.iosIcon) return null
     return (
       <ListItem
         button
         noBorder
-        onPress={() => this.nav(data.route)}
+        onPress={() => navigation.navigate(data.route)}
       >
         <Left>
           <Icon
