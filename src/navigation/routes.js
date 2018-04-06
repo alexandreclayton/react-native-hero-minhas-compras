@@ -8,7 +8,7 @@ import SignIn from 'screens/signin'
 import SignUp from 'screens/signup'
 import Main from 'screens/main'
 import Product from 'screens/product'
-import Category from 'screens/category'
+import CategoriaScreen from 'screens/categoria'
 
 // Routes
 import { routes } from 'lib/navigation'
@@ -28,7 +28,7 @@ const LoginNavApp = StackNavigator({
 const RootNavApp = StackNavigator({
   MainScreen: { screen: Main },
   ProductScreen: { screen: Product },
-  CategoryScreen: { screen: Category },
+  CategoryScreen: { screen: CategoriaScreen },
 }, {
   initialRouteName: routes.MAIN_SCREEN.route.routeName,
   navigationOptions: ({ navigation }) => (
