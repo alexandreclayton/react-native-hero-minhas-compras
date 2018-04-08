@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 
+  btnAdd: {
+    color: colors.white,
+  },
+
 })
 
 export default styles
