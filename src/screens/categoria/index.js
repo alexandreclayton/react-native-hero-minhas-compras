@@ -10,6 +10,7 @@ import {
   ListItem,
   Text,
   Right,
+  Spinner,
 } from 'native-base'
 import { StatusBar, ListView } from 'react-native'
 import PropTypes from 'prop-types'
@@ -60,15 +61,18 @@ class CategoriaScreen extends Component {
     return (
       <Container style={styles.container} >
         <StatusBar barStyle="light-content" translucent backgroundColor={colors.primaryColor} />
-        <Content padder contentContainerStyle={styles.content}>
-          <List
-            dataSource={ds.cloneWithRows(categoria.data)}
-            renderRow={data => this.itemList(data)}
-            renderLeftHiddenRow={data => this.btnLeft(data)}
-            renderRightHiddenRow={data => this.btnRight(data)}
-            leftOpenValue={75}
-            rightOpenValue={-75}
-          />
+        <Content contentContainerStyle={styles.content}>
+          {!categoria.data
+            ? <Spinner color={colors.primaryColor} style={styles.spinner} />
+            : <List
+              dataSource={ds.cloneWithRows(categoria.data)}
+              renderRow={data => this.itemList(data)}
+              renderLeftHiddenRow={data => this.btnLeft(data)}
+              renderRightHiddenRow={data => this.btnRight(data)}
+              leftOpenValue={75}
+              rightOpenValue={-75}
+            />
+          }
         </Content>
       </Container>
     )

@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 
+  spinner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   btnAdd: {
     color: colors.white,
   },
